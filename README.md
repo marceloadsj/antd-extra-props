@@ -42,7 +42,9 @@ function MyComponent() {
 
 ### Available Props
 
-| component | prop          | type   | default value |
-| --------- | ------------- | ------ | ------------- |
-| Card      | headClassName | string | undefined     |
-| Card      | bodyClassName | string | undefined     |
+| component | prop             | type   | default value |
+| --------- | ---------------- | ------ | ------------- |
+| Card      | headClassName    | string | undefined     |
+| Card      | bodyClassName    | string | undefined     |
+| Card      | coverClassName   | string | undefined     |
+| Card      | actionsClassName | string | undefined     |

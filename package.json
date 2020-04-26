@@ -1,6 +1,6 @@
 {
   "name": "antd-extra-props",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Hacky way to bypass some antd limitations like missing props...",
   "keywords": [
     "antd",
