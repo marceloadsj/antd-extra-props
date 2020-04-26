@@ -1,14 +1,16 @@
-// inject className on child, making a copy of the object
-function injectClassNameOnChild({ child, parent, matchClass, propName }) {
-  if (
+// check if child exists and className match
+function childIncludesClass(child, matchClass) {
+  return (
     child &&
     child.props &&
     child.props.className &&
-    child.props.className.includes(matchClass) &&
-    parent &&
-    parent.props &&
-    parent.props[propName]
-  ) {
+    child.props.className.includes(matchClass)
+  );
+}
+
+// inject className on child, making a copy of the object
+function injectClassOnChild({ child, parent, propName }) {
+  if (parent && parent.props && parent.props[propName]) {
     const newChild = {
       ...child,
       props: { ...child.props },
@@ -64,41 +66,29 @@ export default (Card) => {
                 };
 
                 newInlineContent.props.children.forEach((child, index) => {
-                  newInlineContent.props.children[
-                    index
-                  ] = injectClassNameOnChild({
-                    child,
-                    parent: inlineContent,
-                    match: "card-body",
-                    propName: "bodyClassName",
-                  });
+                  let newChild = child;
 
-                  newInlineContent.props.children[
-                    index
-                  ] = injectClassNameOnChild({
-                    child,
-                    parent: inlineContent,
-                    match: "card-head",
-                    propName: "headClassName",
-                  });
+                  if (childIncludesClass(child, "card-body")) {
+                    newChild = injectClassOnChild({
+                      child,
+                      parent: inlineContent,
+                      propName: "bodyClassName",
+                    });
+                  } else if (childIncludesClass(child, "card-head")) {
+                    newChild = injectClassOnChild({
+                      child,
+                      parent: inlineContent,
+                      propName: "headClassName",
+                    });
+                  } else if (childIncludesClass(child, "card-actions")) {
+                    newChild = injectClassOnChild({
+                      child,
+                      parent: inlineContent,
+                      propName: "actionsClassName",
+                    });
+                  }
 
-                  newInlineContent.props.children[
-                    index
-                  ] = injectClassNameOnChild({
-                    child,
-                    parent: inlineContent,
-                    match: "card-cover",
-                    propName: "coverClassName",
-                  });
-
-                  newInlineContent.props.children[
-                    index
-                  ] = injectClassNameOnChild({
-                    child,
-                    parent: inlineContent,
-                    match: "card-actions",
-                    propName: "actionsClassName",
-                  });
+                  newInlineContent.props.children[index] = newChild;
                 });
 
                 // here we clean the props to not have react warning about them
