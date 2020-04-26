@@ -1,0 +1,29 @@
+{
+  "name": "antd-extra-props",
+  "version": "0.1.0",
+  "description": "Hacky way to bypass some antd limitations like missing props...",
+  "keywords": [
+    "antd",
+    "props",
+    "extra"
+  ],
+  "homepage": "https://github.com/marceloadsj/antd-extra-props#readme",
+  "bugs": {
+    "url": "https://github.com/marceloadsj/antd-extra-props",
+    "email": "marceloadsj1@gmail.com"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Marcelo Silva Junior",
+    "email": "marceloadsj1@gmail.com",
+    "url": "https://github.com/marceloadsj"
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marceloadsj/antd-extra-props.git"
+  },
+  "peerDependencies": {
+    "antd": "^4.1.5"
+  }
+}
