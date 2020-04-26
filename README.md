@@ -46,5 +46,4 @@ function MyComponent() {
 | --------- | ---------------- | ------ | ------------- |
 | Card      | headClassName    | string | undefined     |
 | Card      | bodyClassName    | string | undefined     |
-| Card      | coverClassName   | string | undefined     |
 | Card      | actionsClassName | string | undefined     |
