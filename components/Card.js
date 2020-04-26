@@ -1,9 +1,9 @@
 export default (Card) => {
   // adding bodyClassName and headClassName by monkey patching the component
-  const cardRender = Card.prototype.render;
+  const render = Card.prototype.render;
 
   Card.prototype.render = function () {
-    const content = cardRender.bind(this)();
+    const content = render.bind(this)();
 
     const renderCard = content.props.children;
 
@@ -46,6 +46,17 @@ export default (Card) => {
                     };
 
                     newChild.props.className += ` ${inlineContent.props.bodyClassName}`;
+
+                    newInlineContent.props.children[index] = newChild;
+                  }
+
+                  if (child?.props.className.includes("card-head")) {
+                    const newChild = {
+                      ...child,
+                      props: { ...child.props },
+                    };
+
+                    newChild.props.className += ` ${inlineContent.props.headClassName}`;
 
                     newInlineContent.props.children[index] = newChild;
                   }
